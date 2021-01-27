@@ -6,12 +6,16 @@ import androidx.lifecycle.viewModelScope
 import com.dawn.kotlinbasedemo.http.ApiException
 import com.dawn.kotlinbasedemo.http.catchException
 import com.dawn.kotlinbasedemo.http.next
+import com.dawn.kotlinbasedemo.takeToast
+import com.dawn.kotlinbasedemo.toast
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 class MainVm : BaseViewModel() {
     val responseText=ObservableField<String>("11111");
+    private val phone="";
+    val pwd="";
 
     /**
      * 请求网络
@@ -54,6 +58,26 @@ class MainVm : BaseViewModel() {
                     delay(1 * 1000)//1s请求一次
                 }
 
+            }
+        }
+
+    }
+
+    /**
+     * 类似登录功能的前置判断的流式写法
+     */
+    fun requestWithTake(){
+        viewModelScope.launch {
+            takeIf {
+                takeToast("请输入电话号码",!phone.isNullOrEmpty())
+            }?.takeIf {
+                takeToast("请输入密码",!pwd.isNullOrEmpty())
+            }?.apply {
+                request {
+                    getListProject();
+                }.next {
+                    toast("请求成功")
+                }
             }
         }
 

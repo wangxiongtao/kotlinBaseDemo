@@ -12,7 +12,8 @@ class MainActivity :BaseActivity<ActivityMainBinding, MainVm>(){
 
     override fun initData(savedInstanceState: Bundle?) {
         viewModel.requestData();
-        viewModel.requestLoopData();
+//        viewModel.requestLoopData();
+//        viewModel.requestWithTake()
 
 
     }
