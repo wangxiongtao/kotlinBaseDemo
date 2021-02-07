@@ -1,3 +1,5 @@
+include ':lib_common'
+include ':shadowimageview'
 include ':lib'
 include ':app'
 rootProject.name = "kotlinBaseDemo"

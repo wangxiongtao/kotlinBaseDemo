@@ -17,6 +17,7 @@
         android:theme="@style/Theme.KotlinBaseDemo"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".demo.rv.RecycleActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".demo.paging.Paging3Activity" />
+        <activity android:name=".demo.paint.PaintActivity" />
     </application>
 
 </manifest>

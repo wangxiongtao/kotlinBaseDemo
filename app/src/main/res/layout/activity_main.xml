@@ -7,13 +7,17 @@
         <variable
             name="mainVm"
             type="com.dawn.kotlinbasedemo.vm.MainVm" />
+        <import type="com.dawn.lib_common.binding.recyclerview.DividerLine"/>
 
     </data>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@{mainVm.responseText}"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:dataList="@{mainVm.dataList}"
+        app:adapter="@{mainVm.adapter}"
+        app:lineManager='@{DividerLine.LineDrawMode.HORIZONTAL}'
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

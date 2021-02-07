@@ -1,15 +1,9 @@
 package com.dawn.kotlinbasedemo
 
-import android.app.Application
+import com.dawn.lib_common.base.BaseApp
 
-class MyApp :Application(){
+class MyApp :BaseApp(){
 
-    override fun onCreate() {
-        super.onCreate()
-        myApp=this;
-    }
-    companion object{
-        var myApp:MyApp?=null;
-    }
+
 
 }

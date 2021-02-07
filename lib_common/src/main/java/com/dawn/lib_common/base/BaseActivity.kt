@@ -1,12 +1,12 @@
-package com.dawn.kotlinbasedemo
+package com.dawn.lib_common.base
 
 import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+
 import androidx.lifecycle.ViewModelProvider
-import com.dawn.kotlinbasedemo.vm.BaseViewModel
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
@@ -53,6 +53,7 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppComp
         val viewModel = ViewModelProvider(this).get(viewModelClass) as VM
         if (getVariableId() > 0) {
             viewDataBinding.setVariable(getVariableId(), viewModel)
+            lifecycle.addObserver(viewModel)
         }
         return viewModel;
     }

@@ -1,13 +1,21 @@
 package com.dawn.kotlinbasedemo.vm
 
 import android.util.Log
+import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableField
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.viewModelScope
-import com.dawn.kotlinbasedemo.http.ApiException
-import com.dawn.kotlinbasedemo.http.catchException
-import com.dawn.kotlinbasedemo.http.next
-import com.dawn.kotlinbasedemo.takeToast
-import com.dawn.kotlinbasedemo.toast
+import com.dawn.kotlinbasedemo.BR
+import com.dawn.kotlinbasedemo.R
+import com.dawn.kotlinbasedemo.api.request
+import com.dawn.kotlinbasedemo.api.requestSimple
+import com.dawn.lib_common.base.BaseViewModel
+import com.dawn.lib_common.binding.recyclerview.RVItemAdapter
+import com.dawn.lib_common.http.ApiException
+import com.dawn.lib_common.http.catchException
+import com.dawn.lib_common.http.next
+import com.dawn.lib_common.util.takeToast
+import com.dawn.lib_common.util.toast
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -16,6 +24,27 @@ class MainVm : BaseViewModel() {
     val responseText=ObservableField<String>("11111");
     private val phone="";
     val pwd="";
+    val dataList= ObservableArrayList<ActItemBean>()
+    val adapter=object :RVItemAdapter<ActItemBean>(){
+        override fun getLayoutId(viewType: Int): Int {
+            return R.layout.item_rv
+        }
+
+        override fun onBindViewHolder(
+            binding: ViewDataBinding,
+            item: ActItemBean,
+            position: Int
+        ) {
+           binding.setVariable(BR.item,item)
+        }
+
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        requestData()
+        dataList.add(ActItemBean("D"))
+    }
 
     /**
      * 请求网络
@@ -29,7 +58,7 @@ class MainVm : BaseViewModel() {
                 responseText.set(this.data.toString())
             }.catchException {
                 when(this){
-                    is ApiException->{
+                    is ApiException ->{
 
                     }
                     is IOException->{

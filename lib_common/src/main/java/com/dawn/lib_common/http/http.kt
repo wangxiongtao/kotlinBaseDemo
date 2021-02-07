@@ -1,7 +1,8 @@
-package com.dawn.kotlinbasedemo.http
+package com.dawn.lib_common.http
 
-import com.dawn.kotlinbasedemo.BuildConfig
 
+
+import com.dawn.lib_common.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -9,13 +10,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-val Api: ApiInterface by lazy {
+
+val retrofit:Retrofit by lazy {
     Retrofit.Builder()
         .baseUrl("https://www.wanandroid.com")
         .addConverterFactory(GsonConverterFactory.create())
         .client(getOkHttpClient())
-        .build().create(ApiInterface::class.java)
+        .build()
 }
+
 
 private fun getOkHttpClient(): OkHttpClient {
     val builder: OkHttpClient.Builder = OkHttpClient.Builder()

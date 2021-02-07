@@ -1,4 +1,4 @@
-package com.dawn.kotlinbasedemo.http
+package com.dawn.lib_common.http
 
 class BaseResponse<T> {
     val data: T? = null;

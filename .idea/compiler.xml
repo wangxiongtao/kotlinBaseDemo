@@ -3,6 +3,8 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="kotlinBaseDemo.app" target="1.8" />
+      <module name="kotlinBaseDemo.lib_common" target="1.8" />
+      <module name="kotlinBaseDemo.shadowimageview" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
