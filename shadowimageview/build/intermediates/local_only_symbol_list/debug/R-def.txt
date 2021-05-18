@@ -1,0 +1,7 @@
+R_DEF: Internal format may change without notice
+local
+attr? shadowColor
+attr? shadowRound
+attr? shadowSrc
+string app_name
+styleable ShadowImageView shadowRound shadowSrc shadowColor

@@ -14,8 +14,32 @@ import java.io.IOException
 
 class MainVm : BaseViewModel() {
     val responseText=ObservableField<String>("11111");
+    val responseTextFlow=ObservableField<String>("11111");
     private val phone="";
     val pwd="";
+
+    fun requestFlowData(){
+        viewModelScope.launch {
+            requestFow{
+                getListProject();
+            }.catch {
+                when (this) {
+                    is ApiException->{
+
+                    }
+                    is IOException->{
+
+                    }
+                    else->{
+
+                    }
+                }
+            }.next {
+                responseTextFlow.set(data.toString())
+            }
+        }
+    }
+
 
     /**
      * 请求网络

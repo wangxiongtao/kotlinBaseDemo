@@ -1,5 +1,6 @@
 package com.dawn.kotlinbasedemo.vm
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dawn.kotlinbasedemo.http.Api
@@ -8,11 +9,41 @@ import com.dawn.kotlinbasedemo.http.ApiInterface
 import com.dawn.kotlinbasedemo.http.BaseResponse
 import com.dawn.kotlinbasedemo.toast
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
 
 open class BaseViewModel : ViewModel() {
 
-     val loadingEvent = MutableLiveData<Boolean>()
+    val loadingEvent = MutableLiveData<Boolean>()
+
+    /**
+     * 使用flow+retrofit
+     * @param showLoading Boolean 是否 显示loading框
+     * @param request [@kotlin.ExtensionFunctionType] SuspendFunction1<ApiInterface, BaseResponse<T>?>
+     * @return Flow<BaseResponse<T>>
+     */
+    suspend fun <T> requestFow(
+        showLoading: Boolean = true,
+        request: suspend ApiInterface.() -> BaseResponse<T>?
+    ): Flow<BaseResponse<T>> {
+        if (showLoading) {
+            showLoading()
+        }
+        return flow {
+            val response = request(Api) ?: throw IllegalArgumentException("数据非法，获取响应数据为空")
+            if (response.errorCode != 0) {
+                throw  ApiException(response.errorCode, response.errorMsg ?: "")
+            }
+            emit(response)
+        }.flowOn(Dispatchers.IO).catch {
+            Log.e("requestFow","==requestFow==cause==>${Thread.currentThread().name}")
+            toast(message ?: "null")
+            throw this// 这里再重新把捕获的异常再次抛出，调用的时候如果有必要可以再次catch 获取异常
+        }
+            .onCompletion {
+            closeLoading()
+        }
+    }
 
 
     /**
@@ -44,9 +75,9 @@ open class BaseViewModel : ViewModel() {
             requestSimple(request);
 
         } catch (e: Exception) {
-            toast(e.message?:"null")
+            toast(e.message ?: "null")
             BaseResponse<T>().apply {
-                exception =e;
+                exception = e;
             };
         } finally {
             closeLoading()
@@ -54,13 +85,21 @@ open class BaseViewModel : ViewModel() {
     }
 
 
-
-
-     private fun showLoading() {
+    private fun showLoading() {
         loadingEvent.value = true
     }
 
-     private fun closeLoading() {
+    private fun closeLoading() {
         loadingEvent.value = false
     }
+
+}
+
+fun <T> Flow<T>.catch(bloc: Throwable.() -> Unit) = catch {
+        cause-> bloc(cause)
+
+}
+
+suspend fun <T> Flow<T>.next(bloc: suspend T.() -> Unit):Unit = collect {
+    bloc(it)
 }

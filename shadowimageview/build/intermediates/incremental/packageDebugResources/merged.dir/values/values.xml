@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShadowImageView</string>
+    <declare-styleable name="ShadowImageView">
+        <attr format="dimension" name="shadowRound"/>
+        <attr format="reference" name="shadowSrc"/>
+        <attr format="color" name="shadowColor"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,45 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:1:1-10:12
+INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:1:1-10:12
+INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:1:1-10:12
+INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:1:1-10:12
+INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:1:1-10:12
+INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:1:1-10:12
+INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:1:1-10:12
+	package
+		ADDED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:3:5-42
+		INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+		INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+		ADDED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:1:1-10:12
+		INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+		ADDED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:1:1-10:12
+		INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:1:11-69
+application
+ADDED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:5:5-8:19
+	android:supportsRtl
+		ADDED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:6:9-35
+	android:label
+		ADDED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:5:45-77
+	android:allowBackup
+		ADDED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml:5:18-44
+uses-sdk
+INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+		ADDED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+		INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+		ADDED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
+		INJECTED from D:\workspace\demo\kotlinBaseDemo\shadowimageview\src\main\AndroidManifest.xml
