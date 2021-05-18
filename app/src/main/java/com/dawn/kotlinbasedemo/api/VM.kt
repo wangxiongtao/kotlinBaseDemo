@@ -3,8 +3,10 @@ package com.dawn.kotlinbasedemo.api
 import com.dawn.lib_common.base.BaseViewModel
 import com.dawn.lib_common.http.ApiException
 import com.dawn.lib_common.http.BaseResponse
+import com.dawn.lib_common.util.log
 import com.dawn.lib_common.util.toast
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
 
 /**
@@ -23,6 +25,38 @@ suspend fun <T> BaseViewModel.requestSimple(request: suspend ApiInterface.() -> 
         throw  ApiException(response.errorCode, response.errorMsg ?: "")
     }
     return response;
+}
+suspend fun <T> BaseViewModel.requestFlow(request: suspend ApiInterface.() -> BaseResponse<T>?): Flow<BaseResponse<T>> {
+    /*withContext表示挂起块  配合Retrofit声明的suspend函数执行 该块会挂起直到里面的网络请求完成 最一行就是返回值*/
+    return flow {
+
+            val response=request(Api)?: throw IllegalArgumentException("数据非法，获取响应数据为空")
+            log("===requestFlow==request==${Thread.currentThread().name}")
+            if (response.errorCode != 0) {
+                throw  ApiException(response.errorCode, response.errorMsg ?: "")
+            }
+            emit(response)
+
+
+    }.onStart {
+        log("===requestFlow==onStart==${Thread.currentThread().name}")
+    }.flowOn(Dispatchers.IO).catch {
+        cause ->
+        run {
+            throw  cause
+        }
+    }.onCompletion {
+        log("===requestFlow==onCompletion==${Thread.currentThread().name}")
+    }
+
+//    val response = withContext(Dispatchers.IO) {
+//        /*扩展函数可以很方便的解析出我们想要的数据  接口很多的情况下下可以节省不少无用代码*/
+//        request(Api)
+//    } ?: throw IllegalArgumentException("数据非法，获取响应数据为空")
+//    if (response.errorCode != 0) {
+//        throw  ApiException(response.errorCode, response.errorMsg ?: "")
+//    }
+//    return response;
 }
 
 suspend fun <T> BaseViewModel.request(

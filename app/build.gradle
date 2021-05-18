@@ -21,7 +21,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -34,6 +34,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 
@@ -60,4 +64,26 @@ dependencies {
 
     // 用于测试
     testImplementation "androidx.paging:paging-common:$paging_version"
+
+
+    implementation 'com.github.promeg:tinypinyin:2.0.3' // TinyPinyin核心包，约80KB
+
+    implementation 'com.github.promeg:tinypinyin-lexicons-android-cncity:2.0.3' // 可选，适用于Android的中国地区词典
+
+
+
+
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
+    implementation 'com.github.hyy920109:GuidePro:1.0.3'
+
+
+
+
+
+
+
+
+
+
 }

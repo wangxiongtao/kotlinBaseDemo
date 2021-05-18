@@ -5,6 +5,10 @@ class BaseResponse<T> {
     val errorCode: Int? = null;
     val errorMsg: String? = null;
     var exception: Exception? = null;
+    override fun toString(): String {
+        return "BaseResponse(data=$data, errorCode=$errorCode, errorMsg=$errorMsg, exception=$exception)"
+    }
+
 }
 
 inline fun <T> BaseResponse<T>.next(bloc: BaseResponse<T>.() -> Unit): BaseResponse<T> {

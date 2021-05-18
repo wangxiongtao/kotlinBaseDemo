@@ -5,6 +5,12 @@
         <variable
             name="item"
             type="com.dawn.kotlinbasedemo.vm.ActItemBean" />
+        <variable
+            name="mainVm"
+            type="com.dawn.kotlinbasedemo.vm.MainVm" />
+        <variable
+            name="position"
+            type="String" />
 
     </data>
 

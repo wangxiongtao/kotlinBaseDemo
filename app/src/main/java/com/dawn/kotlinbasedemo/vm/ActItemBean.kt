@@ -3,8 +3,7 @@ package com.dawn.kotlinbasedemo.vm
 import android.app.Activity
 import android.content.Intent
 
-class ActItemBean constructor(val name:String) {
-
+class ActItemBean constructor(val name:String, val clas: Class<*>) {
 
 
 }

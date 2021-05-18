@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="mainVm"
+            type="com.dawn.kotlinbasedemo.vm.MainVm" />
+        <import type="com.dawn.lib_common.binding.recyclerview.DividerLine"/>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/btn_step_first"
+        android:layout_margin="100dp"
+        android:layout_width="100dp"
+        android:text="2222222"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/purple_200"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:dataList="@{mainVm.dataList}"
+        app:adapter="@{mainVm.adapter}"
+        app:lineManager='@{DividerLine.LineDrawMode.HORIZONTAL}'
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+</layout>

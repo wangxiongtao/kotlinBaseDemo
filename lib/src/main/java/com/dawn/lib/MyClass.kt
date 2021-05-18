@@ -1,4 +1,5 @@
 package com.dawn.lib
+
 var a1:Int=10
 get() {
     return 1000
@@ -12,6 +13,9 @@ val a:MyClass? by lazy {
 
 
 fun main() {
+    println("=====================a1 iiii================$")
+
+
     println("=====================a1================${a1}")
     val a=(1+1);
 

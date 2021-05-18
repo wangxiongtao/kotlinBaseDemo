@@ -12,19 +12,22 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
     lateinit var viewDataBinding: VDB;
     lateinit var viewModel: VM;
-    private var loadingDialog:ProgressDialog?=null;
+    private var loadingDialog: ProgressDialog? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId())
         viewModel = getVm();
-        viewModel.loadingEvent.observe(this) {
-            if (it){
-                showLoading()
-            }else{
-                dismissLoading()
-            }
-
+//        viewModel.loadingEvent.observe(this) {
+//            if (it) {
+//                showLoading()
+//            } else {
+//                dismissLoading()
+//            }
+//
+//        }
+        viewModel.startActivity.observe(this) {
+            onStartActivity(it);
         }
         initData(savedInstanceState)
     }
@@ -33,6 +36,9 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppComp
 
 
     abstract fun initData(savedInstanceState: Bundle?)
+    open fun onStartActivity(param: Any) {
+
+    }
 
     /**
      * 初始化ViewModel的id
@@ -59,8 +65,8 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppComp
     }
 
     fun showLoading() {
-        if(loadingDialog==null){
-            loadingDialog=ProgressDialog(this).apply {
+        if (loadingDialog == null) {
+            loadingDialog = ProgressDialog(this).apply {
                 setMessage("加载中。。。")
             };
         }

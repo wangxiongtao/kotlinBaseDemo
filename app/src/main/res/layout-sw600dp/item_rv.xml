@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="item"
+            type="com.dawn.kotlinbasedemo.vm.ActItemBean" />
+        <variable
+            name="mainVm"
+            type="com.dawn.kotlinbasedemo.vm.MainVm" />
+
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:textSize="30sp"
+        android:text="@{item.name}"
+        android:layout_height="wrap_content"/>
+
+</layout>

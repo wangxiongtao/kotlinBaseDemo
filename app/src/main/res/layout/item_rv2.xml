@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="item"
+            type="com.dawn.kotlinbasedemo.demo.rv.data.GroupDataBean" />
+        <variable
+            name="position"
+            type="int" />
+
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/teal_200"
+        android:text='@{item+"----------position==--"+position}'
+        android:layout_height="100dp"/>
+
+</layout>

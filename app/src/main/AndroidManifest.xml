@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
+    <queries>
+        <package android:name="com.kamridor.treector" />
+    </queries>
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -17,7 +21,20 @@
         android:theme="@style/Theme.KotlinBaseDemo"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".demo.rv.RecycleActivity"></activity>
+        <activity android:name=".demo.statistics.StatisticsActivity"></activity>
+        <activity android:name=".demo.motion.MotionActivity5" />
+        <activity android:name=".demo.motion.MotionActivity4" />
+        <activity android:name=".demo.motion.MotionActivity3" />
+        <activity android:name=".demo.motion.MotionActivity2" />
+        <activity
+            android:name=".demo.circularreveal.CircularRevealActivity"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name=".demo.paging2.PagingNewActivity" />
+        <activity android:name=".demo.motion.MotionLayoutActivity" />
+        <activity android:name=".demo.viewdsl.ViewDSLActivity" />
+        <activity
+            android:name=".demo.rv.RecycleActivity"
+            android:label="RV" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

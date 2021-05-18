@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:text="好"
+            android:textColor="@color/teal_200"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="90dp"
+            android:text="啊"
+            android:textColor="@color/teal_200"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/bgView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:alpha="0"
+            android:background="@color/teal_700"
+            android:layout_height="match_parent"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="90dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="60dp"
+            android:text="好"
+            android:textColor="@color/teal_200"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="啊"
+            android:textColor="@color/teal_200"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:alpha="1"
+            android:id="@+id/bgView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:background="@color/teal_700"
+            android:layout_height="match_parent"/>
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start"
+        app:duration="1000"
+        app:staggered="0.1"
+        app:motionInterpolator="easeInOut"
+        app:autoTransition="animateToEnd"
+        >
+        <KeyFrameSet>
+            <KeyCycle
+                android:translationY="20dp"
+                app:framePosition="100"
+                app:motionTarget="@+id/text1"
+                app:waveShape="sin"
+                app:wavePeriod="1" />
+            <KeyCycle
+                android:translationY="20dp"
+                app:framePosition="100"
+                app:motionTarget="@+id/text2"
+                app:waveShape="triangle"
+                app:wavePeriod="1" />
+            <KeyCycle
+                android:translationY="20dp"
+                app:framePosition="100"
+                app:motionTarget="@+id/text3"
+                app:waveShape="sawtooth"
+                app:wavePeriod="1" />
+
+        </KeyFrameSet>
+    </Transition>
+
+</MotionScene>

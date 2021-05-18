@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motion_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_motion4_scene"
+    app:showPaths="false"
+    tools:context=".demo.motion.MotionActivity4">
+
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/son_motion_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/activity_motion4_son_scene"
+        app:showPaths="false">
+
+        <View
+            android:id="@+id/son_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#ff00ff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    <View
+        android:id="@+id/myView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@color/purple_700"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/myView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@color/teal_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.dawn.kotlinbasedemo.view.MotionTextView
+        android:id="@+id/myTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="树博士"
+        android:textColor="@color/teal_700"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/filter_view"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:round="1dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/filter_view1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintCircle="@+id/filter_view"
+        app:layout_constraintCircleAngle="0"
+        app:layout_constraintCircleRadius="100dp"
+        app:round="1dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

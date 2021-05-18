@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ConstraintSet android:id="@+id/start" >
+        <Constraint
+            android:id="@+id/myView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/myView2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        <Constraint-->
+<!--            android:id="@+id/filter_view1"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            app:layout_constraintCircleAngle="0"-->
+<!--            app:layout_constraintCircle="@+id/filter_view"-->
+<!--            app:layout_constraintCircleRadius="100dp"-->
+
+<!--            />-->
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/end" >
+        <Constraint
+            android:id="@+id/myView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Constraint
+            android:alpha="0"
+            android:id="@+id/myView2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+    <Transition
+        app:duration="100"
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/end" >
+        <OnClick app:targetId="@id/myView" />
+    </Transition>
+
+
+
+
+    <ConstraintSet android:id="@+id/end1" >
+        <Constraint
+            android:id="@+id/myView2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <Constraint
+            android:id="@+id/myView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:alpha="0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </ConstraintSet>
+    <Transition
+        app:duration="100"
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/end1"
+        app:motionInterpolator="cubic(0,1,1,0)">
+        <OnClick app:targetId="@id/myView2" />
+    </Transition>
+
+
+    <ConstraintSet android:id="@+id/end2" >
+        <Constraint
+            android:id="@+id/myTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </ConstraintSet>
+    <Transition
+        app:duration="1000"
+        app:pathMotionArc="flip"
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/end2" >
+        <KeyFrameSet>
+
+            <KeyTrigger
+                app:motionTarget="@+id/myTextView"
+                app:framePosition="50"
+                app:onPositiveCross="changeColor"/>
+            <KeyTrigger
+                app:motionTarget="@+id/myTextView"
+                app:framePosition="50"
+                app:onNegativeCross="changeColor2"/>
+
+        </KeyFrameSet>
+        <OnClick app:targetId="@id/myTextView" />
+    </Transition>
+
+
+
+
+
+
+<!--    app:layout_constraintCircleAngle="90"-->
+<!--    app:layout_constraintCircle="@+id/filter_view"-->
+<!--    app:layout_constraintCircleRadius="100dp"-->
+
+    <ConstraintSet android:id="@+id/end3" >
+        <Constraint
+            android:id="@+id/filter_view1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintCircleAngle="360"
+            app:layout_constraintCircle="@+id/filter_view"
+            app:layout_constraintCircleRadius="100dp"
+            />
+    </ConstraintSet>
+    <Transition
+        app:motionInterpolator="easeOut"
+        app:duration="1000"
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/end3" >
+        <KeyFrameSet>
+            <KeyPosition
+                app:motionTarget="@id/filter_view1"
+                app:framePosition="25"
+                app:keyPositionType="parentRelative"
+                app:percentX="0.8"
+                app:percentY="0.5"
+                />
+            <KeyPosition
+                app:motionTarget="@id/filter_view1"
+                app:framePosition="50"
+                app:keyPositionType="parentRelative"
+                app:percentX="0.5"
+                app:percentY="0.8"
+                />
+            <KeyPosition
+                app:motionTarget="@id/filter_view1"
+                app:framePosition="75"
+                app:keyPositionType="parentRelative"
+                app:percentX="0.2"
+                app:percentY="0.5"
+                />
+
+
+        </KeyFrameSet>
+        <OnClick app:targetId="@id/filter_view1"/>
+    </Transition>
+</MotionScene>

@@ -5,7 +5,8 @@ import androidx.lifecycle.MutableLiveData
 open class BaseViewModel : LifeViewModel() {
 
 
-    val loadingEvent = MutableLiveData<Boolean>()
+    private val loadingEvent = MutableLiveData<Boolean>()
+    val startActivity=MutableLiveData<Any>()
 
 
 

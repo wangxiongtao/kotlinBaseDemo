@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_motion3_scene"
+    tools:context=".demo.motion.MotionActivity3">
+
+    <View
+        android:id="@+id/widget222"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@color/black"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="60dp" />
+    <View
+        android:id="@+id/widget3333"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@color/teal_700" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

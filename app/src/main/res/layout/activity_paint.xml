@@ -1,13 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context=".demo.paint.PaintActivity">
-    <com.dawn.kotlinbasedemo.view.PaintView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    xmlns:tools="http://schemas.android.com/tools">
 
-</LinearLayout>
+    <data>
+        <variable
+            name="paintVm"
+            type="com.dawn.kotlinbasedemo.demo.paint.vm.PaintVm" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".demo.paint.PaintActivity">
+        <com.dawn.kotlinbasedemo.view.DragView
+            android:id="@+id/dagView"
+            android:layout_width="50dp"
+            android:background="@color/purple_200"
+            android:layout_height="50dp"/>
+        <com.dawn.kotlinbasedemo.view.MyView
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="3333" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_margin="30dp"
+            android:onClick="@{()->paintVm.toSkip()}"
+            app:cardBackgroundColor="@color/purple_200"
+            app:cardCornerRadius="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:text="1111"
+                android:gravity="center"
+                android:layout_height="match_parent" />
+        </androidx.cardview.widget.CardView>
+
+        <com.dawn.lib_common.view.LoadingButton
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/purple_200"
+            android:gravity="center"
+            android:text="11122" />
+
+        <com.dawn.kotlinbasedemo.view.PaintView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

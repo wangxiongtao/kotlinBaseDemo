@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layoutDescription="@xml/activity_motion5_scene"
+    tools:context=".demo.motion.MotionActivity5">
+
+    <include
+        android:id="@+id/sin_ll"
+        layout="@layout/activity_motion_sin"
+        android:visibility="gone" />
+
+    <Button
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+</LinearLayout>
