@@ -12,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
 
+
 open class BaseViewModel : ViewModel() {
 
     val loadingEvent = MutableLiveData<Boolean>()
@@ -24,6 +25,7 @@ open class BaseViewModel : ViewModel() {
      */
     suspend fun <T> requestFow(
         showLoading: Boolean = true,
+
         request: suspend ApiInterface.() -> BaseResponse<T>?
     ): Flow<BaseResponse<T>> {
         if (showLoading) {
@@ -35,15 +37,22 @@ open class BaseViewModel : ViewModel() {
                 throw  ApiException(response.errorCode, response.errorMsg ?: "")
             }
             emit(response)
-        }.flowOn(Dispatchers.IO).catch {
-            Log.e("requestFow","==requestFow==cause==>${Thread.currentThread().name}")
-            toast(message ?: "null")
-            throw this// 这里再重新把捕获的异常再次抛出，调用的时候如果有必要可以再次catch 获取异常
-        }
-            .onCompletion {
-            closeLoading()
-        }
+        }.flowOn(Dispatchers.IO)
+            .onCompletion { cause ->
+                run {
+                    closeLoading()
+                    Log.e("requestFow", "==onCompletion==cause==>${cause}")
+                    cause?.let {
+                        toast(it.message?:"")
+//                        throw cause//可以对异常二次加工 然后抛出去
+                    }
+
+
+                }
+
+            }
     }
+
 
 
     /**
@@ -95,11 +104,18 @@ open class BaseViewModel : ViewModel() {
 
 }
 
-fun <T> Flow<T>.catch(bloc: Throwable.() -> Unit) = catch {
-        cause-> bloc(cause)
+fun <T> Flow<T>.catch222(bloc: Throwable.() -> Unit) = catch { cause ->
+    toast(cause.message ?: "")
+    bloc(cause)
+
 
 }
 
-suspend fun <T> Flow<T>.next(bloc: suspend T.() -> Unit):Unit = collect {
+fun <T> Flow<T>.catch(bloc: Throwable.() -> Unit) = catch { cause ->
+    bloc(cause)
+
+}
+
+suspend fun <T> Flow<T>.next(bloc: suspend T.() -> Unit): Unit = catch {  }.collect {
     bloc(it)
 }

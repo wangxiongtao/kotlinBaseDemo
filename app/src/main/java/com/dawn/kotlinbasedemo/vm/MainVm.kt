@@ -20,23 +20,22 @@ class MainVm : BaseViewModel() {
 
     fun requestFlowData(){
         viewModelScope.launch {
-            requestFow{
-                getListProject();
+            //单独处理异常
+            requestFow() {
+                getListProject()
             }.catch {
-                when (this) {
-                    is ApiException->{
-
-                    }
-                    is IOException->{
-
-                    }
-                    else->{
-
-                    }
-                }
-            }.next {
+                Log.e("requestFow", "==catch=========>${this}")
+            }. next{
+                Log.e("requestFow", "==collect=---------------=next==>${this}")
                 responseTextFlow.set(data.toString())
             }
+
+            //不需要单独处理异常
+//            requestFow {
+//                getListProject()
+//            }.next {
+//                responseTextFlow.set(data.toString())
+//            }
         }
     }
 

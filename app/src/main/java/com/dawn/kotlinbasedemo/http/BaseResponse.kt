@@ -4,7 +4,7 @@ class BaseResponse<T> {
     val data: T? = null;
     val errorCode: Int? = null;
     val errorMsg: String? = null;
-    var exception: Exception? = null;
+    var exception: Throwable? = null;
 }
 
 inline fun <T> BaseResponse<T>.next(bloc: BaseResponse<T>.() -> Unit): BaseResponse<T> {
@@ -18,7 +18,7 @@ inline fun <T> BaseResponse<T>.next(bloc: BaseResponse<T>.() -> Unit): BaseRespo
 }
 
 
-inline fun <T> BaseResponse<T>.catchException(bloc: Exception.() -> Unit) {
+inline fun <T> BaseResponse<T>.catchException(bloc: Throwable.() -> Unit) {
     if (exception != null) {
         bloc(exception!!)
     }
