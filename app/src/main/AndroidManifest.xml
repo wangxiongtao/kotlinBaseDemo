@@ -21,7 +21,10 @@
         android:theme="@style/Theme.KotlinBaseDemo"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".demo.statistics.StatisticsActivity"></activity>
+        <activity android:name=".demo.ViewDragHelperActivity"></activity>
+        <activity android:name=".demo.rv.RecycleDiffActivity" />
+        <activity android:name=".demo.rv.RecycleScrollActivity" />
+        <activity android:name=".demo.statistics.StatisticsActivity" />
         <activity android:name=".demo.motion.MotionActivity5" />
         <activity android:name=".demo.motion.MotionActivity4" />
         <activity android:name=".demo.motion.MotionActivity3" />
@@ -43,7 +46,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".demo.paging.Paging3Activity" />
-        <activity android:name=".demo.paint.PaintActivity" />
+        <activity
+            android:name=".demo.paint.PaintActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

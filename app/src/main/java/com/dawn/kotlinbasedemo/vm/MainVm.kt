@@ -11,11 +11,14 @@ import com.dawn.kotlinbasedemo.R
 import com.dawn.kotlinbasedemo.api.request
 import com.dawn.kotlinbasedemo.api.requestFlow
 import com.dawn.kotlinbasedemo.api.requestSimple
+import com.dawn.kotlinbasedemo.demo.ViewDragHelperActivity
 import com.dawn.kotlinbasedemo.demo.circularreveal.CircularRevealActivity
 import com.dawn.kotlinbasedemo.demo.motion.*
 import com.dawn.kotlinbasedemo.demo.paging2.PagingNewActivity
 import com.dawn.kotlinbasedemo.demo.paint.PaintActivity
 import com.dawn.kotlinbasedemo.demo.rv.RecycleActivity
+import com.dawn.kotlinbasedemo.demo.rv.RecycleDiffActivity
+import com.dawn.kotlinbasedemo.demo.rv.RecycleScrollActivity
 import com.dawn.kotlinbasedemo.demo.statistics.StatisticsActivity
 import com.dawn.kotlinbasedemo.demo.viewdsl.ViewDSLActivity
 import com.dawn.lib_common.base.BaseViewModel
@@ -78,17 +81,24 @@ class MainVm : BaseViewModel() {
         super.onCreate()
 //        requestData()
         funFlowRequest()
-        dataList.add(ActItemBean("D", RecycleActivity::class.java))
-        dataList.add(ActItemBean("paint", PaintActivity::class.java))
-        dataList.add(ActItemBean("view-DSL", ViewDSLActivity::class.java))
-        dataList.add(ActItemBean("MotionLayout", MotionLayoutActivity::class.java))
-        dataList.add(ActItemBean("MotionLayout2", MotionActivity2::class.java))
-        dataList.add(ActItemBean("MotionLayout3", MotionActivity3::class.java))
-        dataList.add(ActItemBean("MotionLayout4", MotionActivity4::class.java))
-        dataList.add(ActItemBean("MotionLayout5", MotionActivity5::class.java))
-        dataList.add(ActItemBean("Page3", PagingNewActivity::class.java))
-        dataList.add(ActItemBean("CircularReveal", CircularRevealActivity::class.java))
-        dataList.add(ActItemBean("view坐标统计", StatisticsActivity::class.java))
+        viewModelScope.launch {
+            delay(2000)
+            dataList.add(ActItemBean("D", RecycleActivity::class.java))
+            dataList.add(ActItemBean("paint", PaintActivity::class.java))
+            dataList.add(ActItemBean("view-DSL", ViewDSLActivity::class.java))
+            dataList.add(ActItemBean("MotionLayout", MotionLayoutActivity::class.java))
+            dataList.add(ActItemBean("MotionLayout2", MotionActivity2::class.java))
+            dataList.add(ActItemBean("MotionLayout3", MotionActivity3::class.java))
+            dataList.add(ActItemBean("MotionLayout4", MotionActivity4::class.java))
+            dataList.add(ActItemBean("MotionLayout5", MotionActivity5::class.java))
+            dataList.add(ActItemBean("Page3", PagingNewActivity::class.java))
+            dataList.add(ActItemBean("CircularReveal", CircularRevealActivity::class.java))
+            dataList.add(ActItemBean("view坐标统计", StatisticsActivity::class.java))
+            dataList.add(ActItemBean("RecycleviewScroll", RecycleScrollActivity::class.java))
+            dataList.add(ActItemBean("RecycleDiff", RecycleDiffActivity::class.java))
+            dataList.add(ActItemBean("ViewDragHelperActivity", ViewDragHelperActivity::class.java))
+        }
+
 
     }
 

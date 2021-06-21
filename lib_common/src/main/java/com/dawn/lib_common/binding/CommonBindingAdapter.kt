@@ -15,14 +15,18 @@ import com.dawn.lib_common.binding.recyclerview.RVItemAdapter
 import com.dawn.lib_common.util.dp
 
 
-@BindingAdapter("dataList", "adapter")
-fun <T> setDataList(recyclerView: RecyclerView, list: List<T>?, adapter: RVItemAdapter<T>) {
+@BindingAdapter(value = ["dataList", "adapter", "itemCount"], requireAll = false)
+fun <T> setDataList(recyclerView: RecyclerView, list: List<T>?, adapter: RVItemAdapter<T>, itemCount:Int) {
     val itemAdapter = recyclerView.adapter as RVItemAdapter<T>?
     if (itemAdapter == null) {
         adapter.setList(list)
         recyclerView.adapter = adapter
     } else {
-        itemAdapter.notifyDataSetChanged()
+        if (itemCount == 0) {
+            itemAdapter.notifyDataSetChanged()
+        } else {
+            itemAdapter.notifyItemRangeInserted(0, itemCount)
+        }
     }
 }
 

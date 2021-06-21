@@ -21,7 +21,7 @@
             android:background="@color/purple_200"
             android:layout_height="50dp"/>
         <com.dawn.kotlinbasedemo.view.MyView
-            android:layout_width="50dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"/>
 
         <TextView

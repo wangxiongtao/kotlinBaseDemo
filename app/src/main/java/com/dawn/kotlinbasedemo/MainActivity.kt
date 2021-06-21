@@ -9,9 +9,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearSmoothScroller
 import com.dawn.kotlinbasedemo.databinding.ActivityMainBinding
 import com.dawn.kotlinbasedemo.vm.MainVm
+import com.dawn.kotlinbasedemo.vm.TestBean
+import com.dawn.kotlinbasedemo.vm.TestBean1
 import com.dawn.lib_common.base.BaseActivity
 import com.dawn.lib_common.util.dp
+import com.dawn.lib_common.util.log
 import com.github.promeg.pinyinhelper.Pinyin
+import com.google.gson.Gson
 import com.hyy.highlightpro.HighlightPro
 import com.hyy.highlightpro.parameter.Constraints
 import com.hyy.highlightpro.parameter.HighlightParameter
@@ -26,6 +30,13 @@ import kotlinx.coroutines.launch
 class MainActivity : BaseActivity<ActivityMainBinding, MainVm>() {
     var  listData:MutableList<String>?=null;
     val list: MutableList<String> = ArrayList()
+    val json="{\"a\":1,b:\"2\"}";
+    val json1 = """
+        {
+           "a": "10",
+           "b1":null
+        }
+    """.trimIndent()
 
 
 
@@ -35,6 +46,15 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVm>() {
 
     @ExperimentalStdlibApi
     override fun initData(savedInstanceState: Bundle?) {
+        val bean= Gson().fromJson(json1,TestBean::class.java)
+        log("===TestBean==$bean")
+        log("===TestBean=fullName=${bean.fullName}")
+        val bean1= Gson().fromJson(json, TestBean1::class.java)
+        log("===TestBean=1=$bean1")
+        GlobalScope.launch {
+            getSharedPreferences("ppppppppp", MODE_PRIVATE)
+        }
+
 //        add()
         listData=ArrayList();
         listData?.add("2222")
@@ -100,7 +120,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVm>() {
     }
 
     override fun onStartActivity(param: Any) {
-        startActivity(Intent(this, param as Class<*>))
+        startActivityForResult(Intent(this, param as Class<*>),100)
     }
 
    fun startAPP( appPackageName:String){
@@ -241,6 +261,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVm>() {
         val yy2 = s2.substring(1);
         return true
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        log("==onActivityResult==requestCode==>${requestCode}===resultCode==$resultCode===")
     }
 
 

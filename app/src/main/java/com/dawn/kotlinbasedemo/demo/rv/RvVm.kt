@@ -28,6 +28,21 @@ class RvVm:BaseViewModel() {
         }
 
     }
+    val adapter2=object :RVItemAdapter<GroupDataBean>(){
+        override fun getLayoutId(viewType: Int): Int {
+            log("=MyItemDecoration=getLayoutId==")
+            return R.layout.item_srcoll_rv
+        }
+
+        override fun onBindViewHolder(binding: ViewDataBinding?, item: GroupDataBean?, position: Int) {
+            binding?.setVariable(BR.item,   item);
+            binding?.setVariable(BR.position,   position);
+            binding?.root?.setOnClickListener {
+                toast("ppppp==${position}")
+            }
+        }
+
+    }
 
     override fun onCreate() {
         super.onCreate()

@@ -4,38 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="mainVm"
             type="com.dawn.kotlinbasedemo.vm.MainVm" />
-        <import type="com.dawn.lib_common.binding.recyclerview.DividerLine"/>
+
+        <import type="com.dawn.lib_common.binding.recyclerview.DividerLine" />
 
     </data>
-    <LinearLayout
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_height="match_parent">
+        app:layoutDescription="@xml/activity_main_scene">
+        <!--        <androidx.constraintlayout.utils.widget.ImageFilterView-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            android:layout_width="100dp"-->
+        <!--            app:round="50dp"-->
+        <!--            android:scaleType="fitXY"-->
+        <!--            android:src="@drawable/ic_launcher_background"-->
+        <!--            android:layout_height="100dp"/>-->
         <Button
             android:id="@+id/btn_step_first"
             android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:text="2222222"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/data_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:dataList="@{mainVm.dataList}"
+            android:layout_height="0dp"
             app:adapter="@{mainVm.adapter}"
-            app:lineManager='@{DividerLine.LineDrawMode.HORIZONTAL}'
+            app:dataList="@{mainVm.dataList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_step_first"
+            app:layout_constraintVertical_weight="1"
+            app:lineManager='@{DividerLine.LineDrawMode.HORIZONTAL}' />
 
-    </LinearLayout>
-
-
-
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
 
 </layout>

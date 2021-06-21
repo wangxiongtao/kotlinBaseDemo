@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dawn.kotlinbasedemo.view.ViewDragLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".demo.ViewDragHelperActivity">
+
+    <View
+        android:id="@+id/v_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/teal_200" />
+
+    <View
+        android:id="@+id/gone_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/black" />
+
+    <View
+        android:layout_gravity="end"
+        android:id="@+id/gone_view1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:background="@color/teal_700" />
+    <ImageView
+        android:id="@+id/toggle_image"
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="1111TODO" />
+
+    <LinearLayout
+        android:id="@+id/show_Ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:animateLayoutChanges="true">
+
+        <TextView
+
+            android:id="@+id/show_text"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:background="@color/teal_200"
+            android:text="22222222222" />
+    </LinearLayout>
+
+
+</com.dawn.kotlinbasedemo.view.ViewDragLayout>

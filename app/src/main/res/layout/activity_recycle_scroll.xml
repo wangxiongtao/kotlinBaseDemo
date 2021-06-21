@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="rvvm"
+            type="com.dawn.kotlinbasedemo.demo.rv.RvVm" />
+        <import type="com.dawn.lib_common.binding.recyclerview.DividerLine"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".demo.rv.RecycleScrollActivity">
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/data_rv"
+            android:background="#ff6600"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lineManager='@{DividerLine.LineDrawMode.HORIZONTAL}'
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:adapter="@{rvvm.adapter2}"
+            app:dataList="@{rvvm.dataList}" />
+        <Button
+            android:visibility="gone"
+            android:id="@+id/start_scroll_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="100dp"
+            android:layout_height="80dp"/>
+        <Button
+            android:id="@+id/start_down_btn"
+            android:text="down"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="100dp"
+            android:layout_height="80dp"/>
+        <Button
+            android:id="@+id/start_index_btn"
+            android:text="index"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="100dp"
+            android:layout_height="80dp"/>
+
+        <androidx.constraintlayout.utils.widget.MotionLabel
+            android:id="@+id/label1"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:padding="10dp"
+            android:text="XuYiSheng"
+            android:visibility="gone"
+            android:textSize="100sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textBackground="@mipmap/ic_launcher_round"
+            app:textureHeight="5dp"
+            app:textPanX="0"
+            app:borderRound="20dp"
+            app:textBackgroundPanX="-1"
+            app:textOutlineColor="@color/black"
+            app:textOutlineThickness="10dp"
+            app:textureWidth="10dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

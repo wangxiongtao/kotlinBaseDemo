@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class DividerLine extends RecyclerView.ItemDecoration {
     private static final String TAG = DividerLine.class.getCanonicalName();
     //默认分隔线厚度为2dp
-    private static final int DEFAULT_DIVIDER_SIZE = 1;
+    private static final int DEFAULT_DIVIDER_SIZE = 20;
     //控制分隔线的属性,值为一个drawable
     private static final int ATTRS[] = {android.R.attr.listDivider};
     //divider对应的drawable
@@ -147,6 +147,7 @@ public class DividerLine extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
+        outRect.bottom=DEFAULT_DIVIDER_SIZE;
 //        outRect.bottom = getDividerSize() == 0 ? dip2px(mContext, DEFAULT_DIVIDER_SIZE) : getDividerSize();
     }
 
