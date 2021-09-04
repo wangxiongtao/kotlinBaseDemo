@@ -1,3 +1,5 @@
 include ':lib'
 include ':app'
 rootProject.name = "kotlinBaseDemo"
+
+include ':lib_base'

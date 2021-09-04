@@ -1,0 +1,31 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="trans_activity" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="trans_activity.Activity" />
+
+
+
+
+
+    <!--dialog背景半透明-->
+    <style name="half_trans_Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+    </style>
+    <!--背景透明dialog-->
+    <style name="trans_Dialog" parent="half_trans_Dialog">
+        <item name="android:backgroundDimEnabled">false</item><!--背景变暗-->
+    </style>
+    <!--背景透明dialog-->
+    <style name="trans_full_Dialog" parent="trans_Dialog">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>

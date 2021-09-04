@@ -1,14 +1,19 @@
 package com.dawn.kotlinbasedemo.vm
 
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.ObservableField
 import androidx.lifecycle.viewModelScope
-import com.dawn.kotlinbasedemo.http.ApiException
-import com.dawn.kotlinbasedemo.http.catchException
-import com.dawn.kotlinbasedemo.http.next
+import com.dawn.kotlinbasedemo.api.catchError
+import com.dawn.kotlinbasedemo.api.catchException
+import com.dawn.kotlinbasedemo.api.flowRequest
+import com.dawn.kotlinbasedemo.api.next
 import com.dawn.kotlinbasedemo.takeToast
 import com.dawn.kotlinbasedemo.toast
+import com.dawn.lib_base.base.BaseViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.io.IOException
 
@@ -21,11 +26,10 @@ class MainVm : BaseViewModel() {
     fun requestFlowData(){
         viewModelScope.launch {
             //单独处理异常
-            requestFow() {
+            flowRequest  {
                 getListProject()
-            }.catch {
-                Log.e("requestFow", "==catch=========>${this}")
-            }. next{
+                getListProjec1t()
+            }.next{
                 Log.e("requestFow", "==collect=---------------=next==>${this}")
                 responseTextFlow.set(data.toString())
             }
@@ -45,23 +49,13 @@ class MainVm : BaseViewModel() {
      */
     fun requestData(){
         viewModelScope.launch {
-            request(false) {
+            flowRequest(false) {
                 getListProject();
-            }.next {
-                Log.e("data===>","data=====>${this.data}")
-                responseText.set(this.data.toString())
-            }.catchException {
-                when(this){
-                    is ApiException->{
+            }.catchError {
 
-                    }
-                    is IOException->{
-
-                    }
-                    else->{
-
-                    }
-                }
+            }.collect {
+                Log.e("data===>","data=====>${it.data}")
+                responseText.set(it.data.toString())
             }
         }
     }
@@ -73,7 +67,7 @@ class MainVm : BaseViewModel() {
         viewModelScope.launch {
             runCatching {
                 while (true) {
-                    requestSimple {
+                    flowRequest {
                         getListProject();
                     }.next {
                         Log.e("data===>","requestLoopData=====>${this.data}")
@@ -96,7 +90,7 @@ class MainVm : BaseViewModel() {
             }?.takeIf {
                 takeToast("请输入密码",!pwd.isNullOrEmpty())
             }?.apply {
-                request {
+                flowRequest {
                     getListProject();
                 }.next {
                     toast("请求成功")
